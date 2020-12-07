@@ -1,6 +1,6 @@
 # Day 4: Passport processing
 
-from utilities import read_input
+from utilities import read_input, split_blocks_on_blank_line
 from typing import List
 from string import hexdigits
 
@@ -20,21 +20,6 @@ def test_data():
         "hcl:#cfa07d eyr:2025 pid:166559648",
         "iyr:2011 ecl:brn hgt:59in",
     )
-
-def split_passports(entries:List[str]) -> List[str]:
-    passports = []
-    buffer = ""
-    for entry in entries:
-        if len(entry) == 0:
-            passports.append(buffer)
-            buffer = ""
-        else:
-            buffer = " ".join((buffer, entry))
-            
-    if len(buffer) != 0:
-        passports.append(buffer)
-        
-    return passports
 
 def passport_str_to_dict(passport:str) -> dict:
     elems = passport.split()
@@ -100,7 +85,7 @@ if __name__=="__main__":
     # entries = read_input("04_invalid_passports.txt")
     entries = read_input("04_input.txt")
     
-    passports = [passport_str_to_dict(p) for p in split_passports(entries)]
+    passports = [passport_str_to_dict(p) for p in split_blocks_on_blank_line(entries)]
     valid = [passport_is_valid(passport) for passport in passports]
     
     print(f"Passports read: {len(valid)}\nValid Passports: {sum(valid)}")

@@ -10,3 +10,17 @@ def read_input(fname:str, din:str="../input") -> List[str]:
         
     return rows
     
+def split_blocks_on_blank_line(entries:List[str], delimiter:str=" ") -> List[str]:
+    blocks = []
+    buffer = ""
+    for entry in entries:
+        if len(entry) == 0:
+            blocks.append(buffer)
+            buffer = ""
+        else:
+            buffer = delimiter.join((buffer, entry))
+            
+    if len(buffer) != 0:
+        blocks.append(buffer)
+        
+    return blocks
