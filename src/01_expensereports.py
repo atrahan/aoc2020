@@ -1,9 +1,10 @@
 # Task 1 - Find bad expense reports
 
+from utilities import read_input
+
 target = 2020
 
-with open("../input/01_input.txt", "r") as f:
-    entries = [int(s) for s in f.readlines()]
+entries = [int(s) for s in read_input("01_input.txt")]
 
 # Pair sums to target
 diffs = [target-x for x in entries]

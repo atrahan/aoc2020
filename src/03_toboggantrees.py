@@ -1,5 +1,7 @@
 # Day 3: Toboggan Trees
 
+from utilities import read_input
+
 def get_row_value(row, row_num, horiz_step):
     return row[row_num*horiz_step%len(row)]
 
@@ -12,8 +14,7 @@ def get_tree_count(rows, horiz_step, vert_step):
     
 if __name__=="__main__":
     # Read entries
-    with open("../input/03_input.txt", "r") as  f:
-        rows = [l.strip() for l in f.readlines()]
+    rows = read_input("03_input.txt")
         
     # # Test entries
     # rows = [

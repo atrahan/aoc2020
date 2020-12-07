@@ -1,5 +1,7 @@
 # Task 2 - Find bad passsords
 
+from utilities import read_input
+
 # Explanation
 # 1-3 b: qwerty
 # needs 1-3 b's but has none -> bad!
@@ -45,9 +47,8 @@ def is_password_valid_pos(s, verbose=False):
     
 if __name__=="__main__":
     # Read entries
-    with open("../input/02_input.txt", "r") as f:
-        entries = f.readlines()
-        
+    entries = read_input("02_input.txt")
+    
     # # Test entries
     # entries = [
     #     "1-3 a: abcde",
